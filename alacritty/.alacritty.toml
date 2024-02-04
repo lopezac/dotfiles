@@ -1,0 +1,11 @@
+import = [
+    "~/.config/alacritty/themes/themes/github_dark.toml"
+]
+
+[window]
+
+decorations = "Full"
+
+[font]
+
+normal = { family = "Hack", style = "regular" }

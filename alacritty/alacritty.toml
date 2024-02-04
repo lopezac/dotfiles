@@ -1,0 +1,15 @@
+import = [
+    "~/.config/alacritty/themes/themes/github_dark_high_contrast.toml"
+]
+
+[window]
+
+decorations = "Full"
+
+padding.x = 5
+
+padding.y = 5
+
+[font]
+
+normal = { family = "Hack Nerd Font", style = "regular" }
