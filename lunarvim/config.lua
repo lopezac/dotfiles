@@ -9,8 +9,12 @@ formatters.setup {
   { name = "autopep8" }
 }
 
+lvim.format_on_save.enabled = true
+
 lvim.plugins = {
-  { "askfiy/visual_studio_code" }
+  { "askfiy/visual_studio_code" },
+  { "xiyaowong/virtcolumn.nvim" },
 }
 
 lvim.colorscheme = "visual_studio_code"
+vim.opt.colorcolumn = "80"
