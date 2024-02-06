@@ -6,15 +6,24 @@
 local formatters = require "lvim.lsp.null-ls.formatters"
 
 formatters.setup {
-  { name = "autopep8" }
+  { name = "autopep8", filetypes = { "*.py" } },
+  { name = "prettier", filetypes = { "*.js" } },
 }
-
-lvim.format_on_save.enabled = true
 
 lvim.plugins = {
-  { "askfiy/visual_studio_code" },
   { "xiyaowong/virtcolumn.nvim" },
+  { "projekt0n/github-nvim-theme" },
 }
 
-lvim.colorscheme = "visual_studio_code"
+lvim.colorscheme = "github_dark_high_contrast"
 vim.opt.colorcolumn = "80"
+
+lvim.autocommands = {
+  {
+    "BufEnter",
+    {
+      pattern = { "*.c", "*.cpp", "*.py" },
+      command = "setlocal tabstop=4 shiftwidth=4",
+    }
+  },
+}

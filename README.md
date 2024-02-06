@@ -2,8 +2,12 @@
 
 Hello these are my configuration files for:
 
-* Alacritty a terminal emulator
+* Terminal emulator: Alacritty
 
-* Tmux a terminal multiplexer
+* Terminal multiplexer: Tmux
 
-* LunarVim an IDE Layer for Neovim
+* NeoVim ide distro: LunarVim
+
+* Font: Hack Nerd Font
+
+* Colorscheme: Github Dark High Contrast
