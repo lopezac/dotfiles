@@ -1,8 +1,4 @@
--- Read the docs: https://www.lunarvim.org/docs/configuration
--- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
--- Forum: https://www.reddit.com/r/lunarvim/
--- Discord: https://discord.com/invite/Xb9B4Ny
-
+local natural_cmp = require "recipes"
 local formatters = require "lvim.lsp.null-ls.formatters"
 
 formatters.setup {
@@ -16,8 +12,10 @@ lvim.plugins = {
 }
 
 lvim.colorscheme = "github_dark_high_contrast"
+-- Add ruler at column 80 with virtcolumn.nvim plugin
 vim.opt.colorcolumn = "80"
 
+-- Set tabs size for different files
 lvim.autocommands = {
   {
     "BufEnter",
@@ -27,3 +25,8 @@ lvim.autocommands = {
     }
   },
 }
+
+-- Use natural sort in nvim-tree
+lvim.builtin.nvimtree.setup.sort_by = function(nodes)
+  table.sort(nodes, natural_cmp)
+end
