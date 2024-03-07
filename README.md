@@ -2,7 +2,7 @@
 
 Hello these are my configuration files:
 
-* Terminal emulator: Alacritty
+* Terminal emulator: Alacritty (or maybe Konsole?)
 
 * Terminal multiplexer: Tmux
 
@@ -11,5 +11,3 @@ Hello these are my configuration files:
 * Font: Hack Nerd Font
 
 * Colorscheme: Github Dark High Contrast
-
-* Tiling Window Manager: Sway
