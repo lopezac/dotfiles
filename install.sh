@@ -24,16 +24,16 @@ cp alacritty/alacritty.toml ~/.alacritty.toml
 cp tmux/.tmux.conf ~/.tmux.conf
 
 # install lunarvim config
-if ! ls ~/.config/lvim; then
+if ! [ -d ~/.config/lvim ]; then
   mkdir ~/.config/lvim
 fi
-cp lunarvim/* ~/.config/lvim/
+cp -r lunarvim/* ~/.config/lvim/
 
 # install fonts
-if ! ls ~/.local/share/fonts; then
+if ! [ -d ~/.local/share/fonts ]; then
   mkdir ~/.local/share/fonts
 fi
-cp fonts/* ~/.local/share/fonts
+cp font/* ~/.local/share/fonts
 sudo fc-cache -v
 
 # install bashrc config
