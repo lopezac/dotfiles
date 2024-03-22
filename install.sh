@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install basic packages
-sudo dnf install -y git cargo make python3-pip vim neovim ripgrep
+sudo dnf install -y git cargo make python3-pip vim neovim ripgrep alacritty
 
 # install node with nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
