@@ -1,19 +1,9 @@
 # dotfiles
 
-Hello these are my configuration files:
-
-* Terminal emulator: Alacritty (or maybe Konsole?)
-
-* Terminal multiplexer: Tmux
-
-* NeoVim IDE distro: LunarVim
-
-* Font: Hack Nerd Font
-
-* Colorscheme: Github Dark High Contrast
+Hello these are my personal configuration files.
 
 # How to install
-This install script only works for Fedora.
+This install script only works currently for Fedora.
 ```bash
 # clone repository
 git clone https://github.com/lopezac/dotfiles.git
