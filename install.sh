@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# install bashrc config
+cat bashrc >> ~/.bashrc | bash
+
 # install basic packages
-sudo dnf install -y git make python3-pip vim neovim ripgrep alacritty clang
+sudo dnf install -y git make python3-pip vim ripgrep alacritty clang
 
 # install rust (cargo package)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# install node with nvm
+# install neovim with bob (neovim version manager)
+cargo install --git https://github.com/MordechaiHadad/bob.git
+bob use 0.9.0
+
+# install node with nvm (nodejs version manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -17,9 +24,6 @@ nvm install node
 git config --global user.email "lopezaxel@protonmail.com"
 git config --global user.name "Axel C. Lopez"
 git config --global pull.rebase false # prefer merge instead of rebase
-
-# install lunarvim
-LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 
 # install alacritty config
 cp ./alacritty/alacritty.toml ~/.alacritty.toml
@@ -40,5 +44,8 @@ fi
 cp font/* ~/.local/share/fonts
 sudo fc-cache -v
 
-# install bashrc config
-cat bashrc >> ~/.bashrc
+# if lvim does not run next time, add this solution somehow:
+# remove -a "$NVIM_APPNAME" from ~/.local/bin/lvim
+# source: https://github.com/LunarVim/LunarVim/issues/3612#issuecomment-1379895972 
+# install lunarvim
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
