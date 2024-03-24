@@ -44,8 +44,12 @@ fi
 cp font/* ~/.local/share/fonts
 sudo fc-cache -v
 
-# if lvim does not run next time, add this solution somehow:
-# remove -a "$NVIM_APPNAME" from ~/.local/bin/lvim
-# source: https://github.com/LunarVim/LunarVim/issues/3612#issuecomment-1379895972 
 # install lunarvim
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+
+# solve bug lvim not running
+# remove -a "$NVIM_APPNAME" from last line at ~/.local/bin/lvim
+# source: https://github.com/LunarVim/LunarVim/issues/3612#issuecomment-1379895972 
+beforeLastLine=$(( $( cat ~/.local/bin/lvim | wc -l ) - 1 ))
+sed -i "$beforeLastLine, $ d" ~/.local/bin/lvim
+echo 'nvim -u "$LUNARVIM_BASE_DIR/init.lua" "$@"' >> ~/.local/bin/lvim
