@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# install bashrc config
-cat bashrc >> ~/.bashrc | bash
+echo "Check in your .bashrc if there is a option like 'if running interactively dont do anything'"
+echo -e "If that option exists, disable it, because bash isn't going to update nor PATH\n"
 
 # install basic packages
-sudo dnf install -y git make python3-pip vim ripgrep alacritty clang
+sudo dnf install -y git make python3-pip neovim vim ripgrep alacritty clang cargo
 
-# install rust (cargo package)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# install neovim with bob (neovim version manager)
-cargo install --git https://github.com/MordechaiHadad/bob.git
-bob use 0.9.0
+# install bashrc config
+cat bashrc >> ~/.bashrc | bash
+. ~/.bashrc
 
 # install node with nvm (nodejs version manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -46,10 +43,3 @@ sudo fc-cache -v
 
 # install lunarvim
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
-
-# solve bug lvim not running
-# remove -a "$NVIM_APPNAME" from last line at ~/.local/bin/lvim
-# source: https://github.com/LunarVim/LunarVim/issues/3612#issuecomment-1379895972 
-beforeLastLine=$(( $( cat ~/.local/bin/lvim | wc -l ) - 1 ))
-sed -i "$beforeLastLine, $ d" ~/.local/bin/lvim
-echo 'nvim -u "$LUNARVIM_BASE_DIR/init.lua" "$@"' >> ~/.local/bin/lvim
